@@ -1,57 +1,38 @@
 package com.example.firstapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
+
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.Locale;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE = "hello";
 
-    Button button;
-    Animation animation;
+    public static final String EXTRA_MESSAGE = "OLEG BLIN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView iv= (ImageView)findViewById(R.id.country_flag);
-        iv.setImageResource(R.drawable.unitedkingdom);
-        TextView sometext = (TextView)findViewById(R.id.SomeText);
-        if(Locale.getDefault().getDisplayLanguage().equals("русский"))
-            iv.setImageResource(R.drawable.russia);
-        if(Locale.getDefault().getDisplayLanguage().equals("український"))
-            iv.setImageResource(R.drawable.ukrain);
+        ViewPager2 pager=(ViewPager2)findViewById(R.id.pager);
+        FragmentStateAdapter pageAdapter = new MyAdapter(this);
+        pager.setAdapter(pageAdapter);
 
-        button = (Button)findViewById(R.id.btnshow);
-        button.setOnClickListener(new View.OnClickListener() {
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+        TabLayoutMediator tabLayoutMediator= new TabLayoutMediator(tabLayout, pager, new TabLayoutMediator.TabConfigurationStrategy(){
+
             @Override
-            public void onClick(View v) {
-                animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
-                iv.startAnimation(animation);
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText("Страница " + (position + 1));
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.basic_menu, menu);
-        return true;
+        tabLayoutMediator.attach();
     }
 
 }
