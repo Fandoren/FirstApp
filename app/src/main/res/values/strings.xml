@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">CoolApp</string>
-    <string name="surmin_aleksey">Surmin Aleksey</string>
-    <string name="send_text">Передай меня в новое окно</string>
-    <string name="button_send">Передать</string>
+    <string name="hello">Hello, Android World!</string>
+    <string name="app_name">HelloAndroidWorld</string>
 </resources>

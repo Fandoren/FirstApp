@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    >
-    <EditText
+    android:background="@color/screen_bkg_color">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SomeText"
+        android:textSize="@dimen/large_font_size"
+        android:text="@string/hello"
+        android:textColor="@color/text_color"/>
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/send_text"
-        android:ems="15"
-        android:layout_marginBottom="20dp"
-        android:inputType="textEmailAddress"
-        android:hint="@string/send_text"
+        android:id="@+id/country_flag"
     />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button_send"
-        android:text="@string/button_send"
-        android:onClick="sendMessage"
+        android:text="Animation"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:id="@+id/btnshow"
+        android:textStyle="bold"
         />
+
+
 
 </LinearLayout>
